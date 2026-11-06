@@ -1,17 +1,13 @@
-import dotenv from 'dotenv'
-import path from "path"
+import dotenv from 'dotenv';
+import path from 'path';
 
-const VALID_ENVS = ['sit' , 'uat' , 'bug'] as const
-type TestEnv = (typeof VALID_ENVS)[number]
+const VALID_ENVS = ['sit', 'uat', 'bug'] as const;
+type TestEnv = (typeof VALID_ENVS)[number];
 
+const testEnv = (process.env.TEST_ENV ?? `sit`).toLowerCase();
 
-const testEnv = (process.env.TEST_ENV ?? `sit`).toLowerCase()
-
-
-if(!VALID_ENVS.includes(testEnv as TestEnv)){
-
-    throw new Error(`Invalid TEST_ENV "${testEnv}". Allowed values: ${VALID_ENVS.join(', ')}`);
-
+if (!VALID_ENVS.includes(testEnv as TestEnv)) {
+  throw new Error(`Invalid TEST_ENV "${testEnv}". Allowed values: ${VALID_ENVS.join(', ')}`);
 }
 
 const rootDir = path.resolve(__dirname, '..');
