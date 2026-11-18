@@ -9,3 +9,5 @@ node_modules/
 .env
 .auth
 /docs/
+/payments/
+tests/scratch.spec.ts
