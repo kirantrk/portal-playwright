@@ -9,5 +9,7 @@ export class BasePage {
 
   async goto(path: string): Promise<void> {
     await this.page.goto(path);
+
+
   }
 }
