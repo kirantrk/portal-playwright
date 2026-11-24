@@ -9,6 +9,7 @@ export class DashboardPage extends BasePage {
   readonly bugModeBanner: Locator;
   readonly uploadCard: Locator;
   readonly myFilesCard: Locator;
+  readonly log_out:Locator
 
   constructor(page: Page) {
     super(page);
@@ -20,6 +21,7 @@ export class DashboardPage extends BasePage {
     // The nav links have the same names, so identify the cards by their description text
     this.uploadCard = page.getByRole('link').filter({ hasText: 'Submit PDF, PNG or JPG files to S3' });
     this.myFilesCard = page.getByRole('link').filter({ hasText: 'View upload dates, file sizes and downloads' });
+    this.log_out=page.getByRole("button" ,{name:'Logout'});
   }
 
   async open() {
@@ -28,5 +30,10 @@ export class DashboardPage extends BasePage {
 
   async waitForLoaded() {
     await this.welcomeHeading.waitFor();
+  }
+
+  async logOut():Promise<void>{
+
+    await this.log_out.click()
   }
 }

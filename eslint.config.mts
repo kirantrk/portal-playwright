@@ -8,6 +8,7 @@ export default defineConfig([
   {
     ignores: ['playwright-report/', 'test-results/', 'blob-report/', '.auth/'],
   },
+  
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
     plugins: { js },
@@ -18,5 +19,10 @@ export default defineConfig([
   {
     ...playwright.configs['flat/recommended'],
     files: ['tests/**', 'fixtures/**', 'pages/**'],
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
   },
 ]);

@@ -7,6 +7,7 @@ export class LoginPage extends BasePage {
   readonly loginButton: Locator;
   readonly errorMessage: Locator;
 
+
   constructor(page: Page) {
     super(page);
 
@@ -14,6 +15,8 @@ export class LoginPage extends BasePage {
     this.passwordInput = page.getByLabel('Password', { exact: true });
     this.loginButton = page.getByRole('button', { name: 'Login' });
     this.errorMessage = page.getByText('Invalid email or password.');
+    
+
   }
 
   async open(): Promise<void> {
@@ -25,4 +28,6 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
+
+  
 }

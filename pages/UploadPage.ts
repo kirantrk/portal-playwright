@@ -38,4 +38,12 @@ export class UploadPage extends BasePage {
     await this.selectFile(filePath);
     await this.submit();
   }
+
+  async uploadBuffer(file:{name:string;mimeType:string;buffer:Buffer}):Promise<void>{
+
+    await this.fileInput.setInputFiles(file)
+    await this.submit()
+
+  }
+
 }
